@@ -9,5 +9,10 @@ import com.mmall.pojo.User;
  * @date 18-4-21 下午9:46
  */
 public interface IUserService {
+
     ServerResponse<User> login(String username, String password);
+
+    ServerResponse<String> register(User user);
+
+    ServerResponse<String> checkValid(String str,String type);
 }
