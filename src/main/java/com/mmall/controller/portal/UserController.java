@@ -60,9 +60,54 @@ public class UserController {
         return iUserService.register(user);
     }
 
+    /**
+     * 校验用户名、邮箱是否重复
+     * @param str
+     * @param type
+     * @return
+     */
     @RequestMapping(value = "chenkValid.do", method = RequestMethod.GET)
     @ResponseBody
     public ServerResponse<String> checkValid(String str, String type){
         return iUserService.checkValid(str,type);
+    }
+
+    /**
+     * 获取当前用户信息
+     * @param session
+     * @return
+     */
+    @RequestMapping(value = "get_user_info.do", method = RequestMethod.GET)
+    @ResponseBody
+    public ServerResponse<User> getUserInfo(HttpSession session){
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if(user != null){
+            return ServerResponse.creatBySuccess(user);
+        }
+        return ServerResponse.creatByErrorMessage("用户未登录，无法获取当前用户信息");
+    }
+
+    /**
+     * 获取密码提示问题
+     * @param username
+     * @return
+     */
+    @RequestMapping(value = "forget_get_question.do", method = RequestMethod.GET)
+    @ResponseBody
+    public ServerResponse<String> forgetGetQuestion(String username){
+        return iUserService.selectQuestion(username);
+    }
+
+    /**
+     * 检查问题答案
+     * @param username
+     * @param questin
+     * @param answer
+     * @return
+     */
+    @RequestMapping(value = "forget_check_answer.do", method = RequestMethod.GET)
+    @ResponseBody
+    public ServerResponse<String> forgetCheckAnswer(String username, String questin, String answer){
+    return  iUserService.checkAnswer(username, questin , answer);
     }
 }
