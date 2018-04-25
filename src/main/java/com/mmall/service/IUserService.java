@@ -20,5 +20,7 @@ public interface IUserService {
 
     ServerResponse<String> checkAnswer(String username,String question, String answer);
 
-    public ServerResponse<String> forgetRestPassword(String username, String passwordNew, String forgetToken);
+    ServerResponse<String> forgetRestPassword(String username, String passwordNew, String forgetToken);
+
+    ServerResponse<String> resetPassword(String passwordOld, String passwordNew, User user);
 }
