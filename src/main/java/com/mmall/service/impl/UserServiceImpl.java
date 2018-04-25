@@ -130,7 +130,7 @@ public class UserServiceImpl implements IUserService{
                 return  ServerResponse.creatBySuccessMessage("修改密码成功");
             }
         }else{
-            return ServerResponse.creatByErrorMessage("token错误，请重新获取重置密码的token")
+            return ServerResponse.creatByErrorMessage("token错误，请重新获取重置密码的token");
         }
 
         return ServerResponse.creatByErrorMessage("修改密码失败");
@@ -151,4 +151,24 @@ public class UserServiceImpl implements IUserService{
         return ServerResponse.creatByErrorMessage("密码更新失败");
     }
 
+    public ServerResponse<User> updateInformation(User user){
+        //username是不能被更新的
+        //email也要进行一个校验，校验新的email是不是已经存在，并且存在的email如果相同的话，不能是我们当前的这个用户的
+        int resultCount = userMapper.checkEmailByUserId(user.getEmail(),user.getId());
+        if( resultCount > 0){
+            return ServerResponse.creatByErrorMessage("email已经存在，请更换email在尝试更新");
+        }
+        User updateUser = new User();
+        updateUser.setId(user.getId());
+        updateUser.setEmail(user.getEmail());
+        updateUser.setPhone(user.getPhone());
+        updateUser.setQuestion(user.getQuestion());
+        updateUser.setAnswer(user.getAnswer());
+
+        int updateCount = userMapper.updateByPrimaryKeySelective(updateUser);
+        if(updateCount > 0){
+            return ServerResponse.creatBySuccess("更新个人信息成功",updateUser);
+        }
+        return ServerResponse.creatByErrorMessage("更新个人信息失败");
+    }
 }
