@@ -185,4 +185,10 @@
     FROM mmall_user
     WHERE username=#{username} AND queation=#{question} AND answer = #{answer}
   </select>
+
+  <update id="updatePasswordByUsername" parameterType="map">
+    UPDATE mmall_user
+    SET password = #{passwordNew},update_time = now()
+    where username= #{username}
+  </update>
 </mapper>

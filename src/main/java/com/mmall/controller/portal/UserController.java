@@ -110,4 +110,17 @@ public class UserController {
     public ServerResponse<String> forgetCheckAnswer(String username, String questin, String answer){
     return  iUserService.checkAnswer(username, questin , answer);
     }
+
+    /**
+     * 忘记密码之重置密码功能
+     * @param username
+     * @param passwordNew
+     * @param forgetToken
+     * @return
+     */
+    @RequestMapping(value = "forget_reset_password.do", method = RequestMethod.GET)
+    @ResponseBody
+    public ServerResponse<String> forgetRestPassword(String username, String passwordNew, String forgetToken){
+        return iUserService.forgetRestPassword(username, passwordNew,forgetToken);
+    }
 }
