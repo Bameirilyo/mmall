@@ -28,6 +28,7 @@ public class MD5Util {
 
     /**
      * 返回大写MD5
+     *
      * @param origin
      * @param charsetname
      * @return

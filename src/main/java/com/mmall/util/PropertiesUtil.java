@@ -1,6 +1,6 @@
 package com.mmall.util;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -9,10 +9,10 @@ import java.io.InputStreamReader;
 import java.util.Properties;
 
 /**
- * @author Created by bameirilyo
- * @date 18-5-5 下午10:36
+ * Created by geely
  */
 public class PropertiesUtil {
+
     private static Logger logger = LoggerFactory.getLogger(PropertiesUtil.class);
 
     private static Properties props;
@@ -41,7 +41,9 @@ public class PropertiesUtil {
         if(StringUtils.isBlank(value)){
             value = defaultValue;
         }
-
         return value.trim();
     }
+
+
+
 }

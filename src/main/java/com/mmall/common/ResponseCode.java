@@ -1,5 +1,6 @@
 package com.mmall.common;
 
+
 /**
  * @author Created by bameirilyo
  * @date 18-4-21 下午10:14
@@ -14,7 +15,8 @@ public enum ResponseCode {
     private final int code;
     private final String desc;
 
-    ResponseCode(int code, String desc){
+
+    ResponseCode(int code,String desc){
         this.code = code;
         this.desc = desc;
     }
@@ -22,10 +24,8 @@ public enum ResponseCode {
     public int getCode(){
         return code;
     }
-
     public String getDesc(){
         return desc;
     }
-
 
 }
