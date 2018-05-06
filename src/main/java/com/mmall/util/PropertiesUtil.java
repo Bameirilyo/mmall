@@ -9,7 +9,8 @@ import java.io.InputStreamReader;
 import java.util.Properties;
 
 /**
- * Created by geely
+ * @author Created by bameirilyo
+ * @date 18-5-6 下午11:28
  */
 public class PropertiesUtil {
 
