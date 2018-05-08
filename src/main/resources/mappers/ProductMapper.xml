@@ -185,7 +185,7 @@
     ORDER BY id asc
   </select>
 
-
+<!--用了<where></where>标签之后可以自动处理if里面的and-->
   <select id="selectByNameAndProductId" resultMap="BaseResultMap" parameterType="map">
     SELECT
     <include refid="Base_Column_List"/>
