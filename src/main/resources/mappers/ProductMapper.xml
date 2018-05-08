@@ -177,7 +177,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-
+  <!--resultMap与parameterMap 是写SQL中声明的map，resultType与parameterType是Java中的-->
   <select id="selectList" resultMap="BaseResultMap" >
     SELECT
     <include refid="Base_Column_List"/>
