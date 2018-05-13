@@ -223,6 +223,10 @@ public class ProductServiceImpl implements IProductService{
              categoryIdList = iCategoryService.selectCategoryAndChildrenById(category.getId()).getData();
         }
 
+        if (StringUtils.isNotBlank(keyword)){
+            keyword = new StringBuilder().append("%").append(keyword).append("%").toString();
+        }
+
         PageHelper.startPage(pageNum, pageSize);
         //排序处理
         if (StringUtils.isNotBlank(orderBy)){
