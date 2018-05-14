@@ -58,6 +58,32 @@ public class CartServiceImpl implements ICartService {
         return ServerResponse.createBySuccess(cartVo);
     }
 
+    /**
+     * 购物车更新物品数量操作
+     * @param userId
+     * @param productId
+     * @param count
+     * @return
+     */
+    public ServerResponse<CartVo> update(Integer userId, Integer productId,Integer count) {
+        if (productId == null || count == null) {
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.ILLEGAL_ARGUMENT.getCode(), ResponseCode.ILLEGAL_ARGUMENT.getDesc());
+        }
+        Cart cart = cartMapper.selectCartByUserIdProductId(userId,productId);
+        if (cart != null){
+            cart.setQuantity(count);
+        }
+        cartMapper.updateByPrimaryKeySelective(cart);//更新cart
+        CartVo cartVo = this.getCartVoLimit(userId);
+        return ServerResponse.createBySuccess(cartVo);
+
+    }
+
+    /**
+     * 购物车核心方法
+     * @param userId
+     * @return
+     */
     private CartVo getCartVoLimit(Integer userId){
         CartVo cartVo = new CartVo();
         List<Cart> cartList= cartMapper.selectCartByUserId(userId);

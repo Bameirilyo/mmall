@@ -8,5 +8,8 @@ import com.mmall.vo.CartVo;
  * @date 18-5-14 上午9:34
  */
 public interface ICartService {
+
     ServerResponse<CartVo> add(Integer userId, Integer productId, Integer count);
+
+    ServerResponse<CartVo> update(Integer userId, Integer productId,Integer count);
 }
