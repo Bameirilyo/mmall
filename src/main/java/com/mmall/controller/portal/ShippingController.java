@@ -72,4 +72,19 @@ public class ShippingController {
         return iShippingService.update(user.getId(),shipping);
     }
 
+    /**
+     * 选中查看具体的地址
+     * @param session
+     * @param shippingId
+     * @return
+     */
+    @RequestMapping("select.do")
+    @ResponseBody
+    public ServerResponse<Shipping> select(HttpSession session, Integer shippingId){
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if (user == null){
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
+        }
+        return iShippingService.select(user.getId(),shippingId);
+    }
 }
