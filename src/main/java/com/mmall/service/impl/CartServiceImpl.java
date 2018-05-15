@@ -103,6 +103,13 @@ public class CartServiceImpl implements ICartService {
         return this.list(userId);
     }
 
+    public ServerResponse<Integer> getCartProductCount(Integer userId){
+        if (userId == null){
+            return ServerResponse.createBySuccess(0);
+        }
+        return ServerResponse.createBySuccess(cartMapper.selectCartProductCount(userId));
+    }
+
 
     /**
      * 购物车核心方法
