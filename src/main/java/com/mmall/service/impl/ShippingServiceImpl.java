@@ -45,4 +45,13 @@ public class ShippingServiceImpl implements IShippingService{
         }
         return ServerResponse.createByErrorMessage("删除地址失败");
     }
+
+    public ServerResponse update(Integer userId, Shipping shipping){
+        //更新商品也有越权问题
+        int rowCount = shippingMapper.updateByShipping(shipping);
+        if (rowCount > 0){
+            return ServerResponse.createBySuccess("更新地址成功");
+        }
+        return ServerResponse.createByErrorMessage("更新地址失败");
+    }
 }
