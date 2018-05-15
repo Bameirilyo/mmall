@@ -96,6 +96,14 @@ public class CartServiceImpl implements ICartService {
         return ServerResponse.createBySuccess(cartVo);
     }
 
+    public ServerResponse<CartVo> list(Integer userId){
+        CartVo cartVo = this.getCartVoLimit(userId);
+        return ServerResponse.createBySuccess(cartVo);
+    }
+
+
+
+
     /**
      * 购物车核心方法
      * @param userId

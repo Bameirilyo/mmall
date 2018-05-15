@@ -42,6 +42,21 @@ public class CartController {
     }
 
     /**
+     * 购物车List列表
+     * @param session
+     * @return
+     */
+    @RequestMapping("list.do")
+    @ResponseBody
+    public ServerResponse<CartVo> list(HttpSession session){
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if (user == null){
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
+        }
+        return iCartService.list(user.getId());
+    }
+
+    /**
      * 购物车中更新商品数量功能（加减数量）
      * @param session
      * @param count
