@@ -88,4 +88,68 @@ public class CartController {
         }
         return iCartService.deleteProuct(user.getId(),productIds);
     }
+
+    /**
+     * 全选
+     * @param session
+     * @return
+     */
+    @RequestMapping("select_all.do")
+    @ResponseBody
+    public ServerResponse<CartVo> selectAll(HttpSession session){
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if (user == null){
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
+        }
+        return iCartService.selectOrUnselect(user.getId(),null,Const.Cart.CHECKED);
+    }
+
+    /**
+     * 全不选
+     * @param session
+     * @return
+     */
+    @RequestMapping("un_select_all.do")
+    @ResponseBody
+    public ServerResponse<CartVo> unSelectAll(HttpSession session){
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if (user == null){
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
+        }
+        return iCartService.selectOrUnselect(user.getId(),null,Const.Cart.UN_CHECKED);
+    }
+
+    /**
+     *单独选
+     * @param session
+     * @param productId
+     * @return
+     */
+    @RequestMapping("select.do")
+    @ResponseBody
+    public ServerResponse<CartVo> Select(HttpSession session,Integer productId){
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if (user == null){
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
+        }
+        return iCartService.selectOrUnselect(user.getId(),productId,Const.Cart.CHECKED);
+    }
+
+    /**
+     *单独不选
+     * @param session
+     * @param productId
+     * @return
+     */
+    @RequestMapping("un_select.do")
+    @ResponseBody
+    public ServerResponse<CartVo> unSelect(HttpSession session,Integer productId){
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if (user == null){
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
+        }
+        return iCartService.selectOrUnselect(user.getId(),productId,Const.Cart.UN_CHECKED);
+    }
+
+
 }
