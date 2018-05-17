@@ -91,7 +91,7 @@ public class ShippingController {
     }
 
     /**
-     * 地址列表
+     * 地址列表，需要分页
      * @param pageNum
      * @param pageSize
      * @param session
