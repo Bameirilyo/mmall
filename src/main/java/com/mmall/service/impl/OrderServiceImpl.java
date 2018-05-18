@@ -54,9 +54,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-/**
- * Created by geely
- */
 @Service("iOrderService")
 public class OrderServiceImpl implements IOrderService {
 
@@ -530,6 +527,7 @@ public class OrderServiceImpl implements IOrderService {
         }
         return ServerResponse.createByError();
     }
+
 
     //backend
 
