@@ -13,15 +13,15 @@ public class RedisPoolUtil {
      * @param exTime
      * @return
      */
-    public static Long expire(String key, int exTime){
+    public static Long expire(String key,int exTime){
         Jedis jedis = null;
         Long result = null;
 
-        try{
+        try {
             jedis = RedisPool.getJedis();
-            result = jedis.expire(key, exTime);
-        }catch (Exception e){
-            log.error("expire key:{}  error",key ,e);
+            result = jedis.expire(key,exTime);
+        } catch (Exception e) {
+            log.error("expire key:{} error",key,e);
             RedisPool.returnBrokenResource(jedis);
             return result;
         }
@@ -31,15 +31,15 @@ public class RedisPoolUtil {
     }
 
     //exTime的单位是秒
-    public static String setEx(String key, String value,int exTime){
+    public static String setEx(String key,String value,int exTime){
         Jedis jedis = null;
         String result = null;
 
-        try{
+        try {
             jedis = RedisPool.getJedis();
-            result = jedis.setex(key, exTime, value);
-        }catch (Exception e){
-            log.error("setex key:{} value:{} error",key ,value,e);
+            result = jedis.setex(key,exTime,value);
+        } catch (Exception e) {
+            log.error("setex key:{} value:{} error",key,value,e);
             RedisPool.returnBrokenResource(jedis);
             return result;
         }
@@ -73,7 +73,7 @@ public class RedisPoolUtil {
             jedis = RedisPool.getJedis();
             result = jedis.get(key);
         }catch (Exception e){
-            log.error("set key:{}  error",key ,e);
+            log.error("get key:{}  error",key ,e);
             RedisPool.returnBrokenResource(jedis);
             return result;
         }
@@ -100,19 +100,20 @@ public class RedisPoolUtil {
     }
 
     //测试
-    public static void main(String[] args) {
-        Jedis jedis = RedisPool.getJedis();
-
-        RedisPoolUtil.set("keyTest","value");
-
-        String value = RedisPoolUtil.get("keyTest");
-
-        RedisPoolUtil.setEx("keyex","valueex",60*10);
-
-        RedisPoolUtil.expire("keyTest",60*20);
-
-        RedisPoolUtil.del("keyTest");
-
-        System.out.println("end");
-    }
+//    public static void main(String[] args) {
+//        Jedis jedis = RedisPool.getJedis();
+//
+//        RedisPoolUtil.set("keyTest","value123");
+//
+//        String value = RedisPoolUtil.get("keyTest");
+//
+//        RedisPoolUtil.setEx("keyex","valueex",60*10);
+//
+//        RedisPoolUtil.expire("keyTest",60*20);
+//
+//        RedisPoolUtil.del("keyTest");
+//
+//        System.out.println("end");
+//        System.out.println(value);
+//    }
 }

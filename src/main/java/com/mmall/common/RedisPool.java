@@ -66,6 +66,7 @@ public class RedisPool {
 //            pool.returnBrokenResource(jedis);
             pool.close();
         }
+
     }
 
     /**
@@ -73,10 +74,20 @@ public class RedisPool {
      * @param jedis
      */
     public static void returnResource(Jedis jedis){
-        if (jedis != null){
+//        if (jedis != null){
 //            pool.returnResource(jedis);
-            pool.close();
+////            pool.close();
+//        }
+        try{
+            jedis = pool.getResource();
+        }finally {
+            if (jedis != null){
+                jedis.close();
+            }
         }
+
+
+
     }
 
     public static void main(String[] args) {
