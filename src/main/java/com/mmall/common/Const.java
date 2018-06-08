@@ -10,6 +10,8 @@ import java.util.Set;
  */
 public class Const {
 
+    public static final String TOKEN_PREFIX = "token_";
+
     public static final String CURRENT_USER = "currentUser";
 
     public static final String EMAIL = "email";
