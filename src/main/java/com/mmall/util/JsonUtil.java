@@ -25,10 +25,10 @@ public class JsonUtil {
         //对象的所有字段全部列入
         objectMapper.setSerializationInclusion(Inclusion.ALWAYS);
 
-        //取消默认转换timestamps形式
+        //取消默认转换timestamps形式,如果为true的话则为时间戳（毫秒数）
         objectMapper.configure(SerializationConfig.Feature.WRITE_DATES_AS_TIMESTAMPS,false);
 
-        //忽略空Bean转json的错误
+        //忽略空Bean转json的错误（为true的话，为空时报错）
         objectMapper.configure(SerializationConfig.Feature.FAIL_ON_EMPTY_BEANS,false);
 
         //所有的日期格式都统一为以下的样式，即yyyy-MM-dd HH：mm：ss
