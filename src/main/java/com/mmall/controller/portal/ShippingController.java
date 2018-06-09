@@ -9,7 +9,7 @@ import com.mmall.pojo.User;
 import com.mmall.service.IShippingService;
 import com.mmall.util.CookieUtil;
 import com.mmall.util.JsonUtil;
-import com.mmall.util.RedisPoolUtil;
+//import com.mmall.util.RedisPoolUtil;
 import com.mmall.util.RedisShardedPoolUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-/**
- * @author Created by bameirilyo
- * @date 18-5-15 上午10:17
- */
+
 @Controller
 @RequestMapping("/shipping/")
 public class ShippingController {
