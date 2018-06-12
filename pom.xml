@@ -261,6 +261,20 @@
       <version>2.0.3.RELEASE</version>
     </dependency>
 
+    <!--集成redisson-->
+    <dependency>
+      <groupId>org.redisson</groupId>
+      <artifactId>redisson</artifactId>
+      <version>3.7.1</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-avro -->
+    <!--redisson依赖-->
+    <dependency>
+      <groupId>com.fasterxml.jackson.dataformat</groupId>
+      <artifactId>jackson-dataformat-avro</artifactId>
+      <version>2.9.5</version>
+    </dependency>
 
 
   </dependencies>
